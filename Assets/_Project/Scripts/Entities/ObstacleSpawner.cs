@@ -7,12 +7,14 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
     public GameObject yellowObstacle;
+    public GameObject speedBoost;
     public Transform parent;
 
     private void Start()
     {
-        StartCoroutine(SpawnerCoroutine());
+        //StartCoroutine(SpawnerCoroutine());
         StartCoroutine(SpawnRoadBump());
+        StartCoroutine(SpawnSpeedBoost());
     }
 
     private IEnumerator SpawnerCoroutine()
@@ -32,5 +34,16 @@ public class ObstacleSpawner : MonoBehaviour
         newObstacle.localScale = Vector3.one * randomScale;
         yield return new WaitForSeconds(randomTime);
         StartCoroutine(SpawnRoadBump());
+    }
+    private IEnumerator SpawnSpeedBoost()
+    {
+        //float randomScale = UnityEngine.Random.Range(1f, 3f);
+        float randomTime = UnityEngine.Random.Range(2f, 4f);
+        float randomRange = UnityEngine.Random.Range(-4.4f, 4.4f);
+        Transform newObstacle = Instantiate(speedBoost, parent).transform;
+        newObstacle.position = new Vector3(transform.position.x + randomRange, transform.position.y, transform.position.z);
+        //newObstacle.localScale = Vector3.one * randomScale;
+        yield return new WaitForSeconds(randomTime);
+        StartCoroutine(SpawnSpeedBoost());
     }
 }
