@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c0910fe3df5af1f4f981c64133489cc7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - 26F Galaxy Sans
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9026dc221e1e9f946a72a21d21ed397e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

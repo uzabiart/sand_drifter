@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 8370016a8232e3f409da5f2f5a474d0e
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Atmos
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1017ac28f33c9454d9adcac308070524, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

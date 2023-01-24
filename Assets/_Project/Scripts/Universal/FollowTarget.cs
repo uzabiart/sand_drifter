@@ -16,12 +16,19 @@ public class FollowTarget : MonoBehaviour
 
     private void Update()
     {
-        newPos = new Vector3(
-            x ? target.position.x : transform.position.x,
-            y ? target.position.y : transform.position.y,
-            z ? target.position.z : transform.position.z
-            );
+        if (followSpeed != 0)
+        {
+            newPos = new Vector3(
+                x ? target.position.x : transform.position.x,
+                y ? target.position.y : transform.position.y,
+                z ? target.position.z : transform.position.z
+                );
 
-        transform.DOMove(newPos + offset, followSpeed);
+            transform.DOMove(newPos + offset, followSpeed);
+        }
+        else
+        {
+            transform.position = target.position + offset;
+        }
     }
 }

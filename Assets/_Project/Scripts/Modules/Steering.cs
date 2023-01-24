@@ -7,7 +7,10 @@ using DG.Tweening;
 public class Steering : MonoBehaviour
 {
     public Transform entity;
+    public Transform view;
+    public Car car;
     public Ease ease;
+    public Ease animationEase;
 
     Vector2 clickInput;
     bool steering;
@@ -23,13 +26,30 @@ public class Steering : MonoBehaviour
             StopSteer();
 
         if (steering) Steer();
+        Animate();
+    }
+
+    private void Animate()
+    {
+        float diff = steerPos - entity.transform.localPosition.x;
+        float speed = ((car.currentSpeed - car.defaultSpeed) * 0.02f);
+        GameData.Instance.localPlayer.UpdateGforce(Mathf.Abs(diff));
+        view.DOLocalRotate(new Vector3(Math.Abs(diff * 2f + diff * speed), diff * 2f + diff * speed, diff * -20f + diff * speed), 0.2f).SetEase(animationEase);
     }
 
     private void Steer()
     {
+        if (GameData.Instance.localPlayer.state == ECarState.Dead) return;
+
         steerPos = steeringRange * ((Input.mousePosition.x - (Screen.width * 0.5f)) / (Screen.width * 0.5f));
+
+#if UNITY_EDITOR
+        //steerPos *= 2.2f;
+#else
+        steerPos *= 2.2f;
+#endif
+
         entity.transform.DOLocalMoveX(steerPos, 1f).SetEase(ease);
-        //entity.transform.localPosition = new Vector3(steerPos, entity.localPosition.y, entity.localPosition.z);
     }
 
     void SaveClickInput()

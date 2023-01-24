@@ -11,3 +11,9 @@ public class InputEvents
 {
     public static Action onPlayerClick;
 }
+
+public class GameplayEvents
+{
+    public static Action<ObstacleScore> OnObstacleScore;
+    public static Action OnCarStateChange;
+}
