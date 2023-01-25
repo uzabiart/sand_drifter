@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class GroundTile : MonoBehaviour
 {
-    public SpriteRenderer rend;
-    private void Start()
+    public GameObject curr;
+    public GameObject[] all;
+
+    public void Init()
     {
-        rend.sprite = GameData.Instance.artData.GetRandomSprite();
+        if (curr != null) curr.SetActive(false);
+
+        int randomObst = UnityEngine.Random.Range(0, all.Length);
+        curr = all[randomObst];
+        curr.SetActive(true);
     }
 }

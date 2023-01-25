@@ -5,14 +5,16 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    public GameObject obstaclePrefab;
+    public GroundTile groundPrefab;
     public RoadBump yellowObstacle;
     public GameObject speedBoost;
     public Transform parent;
 
     public List<RoadBump> obstacles = new List<RoadBump>();
+    public List<GroundTile> grounds = new List<GroundTile>();
 
     public int curr;
+    public int curr_gr;
 
     private void Awake()
     {
@@ -21,28 +23,33 @@ public class ObstacleSpawner : MonoBehaviour
     private void InitSpawn()
     {
         for (int i = 0; i < 10; i++)
-        {
-            //RoadBump newObstacle = Instantiate(yellowObstacle, parent);
-            //newObstacle.gameObject.SetActive(false);
             obstacles.Add(Instantiate(yellowObstacle, parent));
-        }
+
+        for (int i = 0; i < 5; i++)
+            grounds.Add(Instantiate(groundPrefab, parent));
     }
 
     private void Start()
     {
-        StartCoroutine(SpawnerCoroutine());
+        StartCoroutine(GroundSpawner());
         StartCoroutine(SpawnRoadBump());
         //StartCoroutine(SpawnRoadBump());
         StartCoroutine(SpawnSpeedBoost());
     }
 
-    private IEnumerator SpawnerCoroutine()
+    private IEnumerator GroundSpawner()
     {
         if (GameData.Instance.localPlayer.state == ECarState.Dead) yield break;
 
-        Instantiate(obstaclePrefab, parent).transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 36);
-        yield return new WaitForSeconds(2.4f);
-        StartCoroutine(SpawnerCoroutine());
+        GroundTile newTile = grounds[curr_gr];
+        curr_gr++;
+        if (curr_gr >= grounds.Count) curr_gr = 0;
+
+        newTile.Init();
+        newTile.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 36);
+
+        yield return new WaitForSeconds(2.4f * (GameData.Instance.gameplaySettings.defaultSpeed / GameData.Instance.localPlayer.speed));
+        StartCoroutine(GroundSpawner());
     }
 
     private IEnumerator SpawnRoadBump()
