@@ -16,6 +16,27 @@ public class ObstacleSpawner : MonoBehaviour
     public int curr;
     public int curr_gr;
 
+    private void OnEnable()
+    {
+        GameEvents.OnGameStateChange += ManageSpawner;
+    }
+    private void OnDisable()
+    {
+        GameEvents.OnGameStateChange -= ManageSpawner;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(GroundSpawner());
+    }
+
+    private void ManageSpawner()
+    {
+        if (GameData.Instance.CurrentGameState != EGameState.Gameplay) { StopAllCoroutines(); return; }
+
+        StartSpawn();
+    }
+
     private void Awake()
     {
         InitSpawn();
@@ -29,9 +50,8 @@ public class ObstacleSpawner : MonoBehaviour
             grounds.Add(Instantiate(groundPrefab, parent));
     }
 
-    private void Start()
+    private void StartSpawn()
     {
-        StartCoroutine(GroundSpawner());
         StartCoroutine(SpawnRoadBump());
         //StartCoroutine(SpawnRoadBump());
         StartCoroutine(SpawnSpeedBoost());

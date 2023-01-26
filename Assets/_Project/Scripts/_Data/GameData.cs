@@ -32,7 +32,7 @@ public class GameData : ScriptableObject
         GameEvents.OnInitialized?.Invoke();
     }
 
-    public void ShowPanel(EPanelType panel)
+    public void ChangePanel(EPanelType panel)
     {
         CurrentPanel = panel;
         UIEvents.OnPanelChanged?.Invoke();

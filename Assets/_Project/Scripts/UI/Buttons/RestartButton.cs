@@ -7,6 +7,7 @@ public class RestartButton : MonoBehaviour
 {
     public void OnClick()
     {
+        GameData.Instance.ChangeGameState(EGameState.Menu);
         SceneManager.LoadScene(0);
     }
 }

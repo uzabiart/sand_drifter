@@ -16,6 +16,6 @@ public class GenericPanelButton : MonoBehaviour
 
     public void OnClick()
     {
-        GameData.Instance.ShowPanel(panelType);
+        GameData.Instance.ChangePanel(panelType);
     }
 }

@@ -22,6 +22,11 @@ public class MenuCamera : MonoBehaviour
         cTransporter = cinemachine.GetCinemachineComponent<CinemachineTransposer>();
     }
 
+    private void Start()
+    {
+        GameData.Instance.ChangePanel(EPanelType.Menu);
+    }
+
     private void OnEnable()
     {
         UIEvents.OnPanelChanged += ManagePanel;
