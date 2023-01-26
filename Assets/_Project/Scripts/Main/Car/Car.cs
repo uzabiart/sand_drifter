@@ -37,6 +37,21 @@ public class Car : MonoBehaviour
         //StartCoroutine(SpawnerCoroutine());
     }
 
+    private void OnEnable()
+    {
+        GameEvents.OnGameStateChange += ManageCarState;
+    }
+    private void OnDisable()
+    {
+        GameEvents.OnGameStateChange -= ManageCarState;
+    }
+
+    public void ManageCarState()
+    {
+        if (GameData.Instance.CurrentGameState == EGameState.Gameplay) godMode = false;
+        else godMode = true;
+    }
+
     private IEnumerator SpawnerCoroutine()
     {
         newVfx = Instantiate(debugPrefab, parent);
