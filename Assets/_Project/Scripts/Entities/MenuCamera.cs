@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 using DG.Tweening;
 
 public class MenuCamera : MonoBehaviour
 {
+    public CinemachineBrain brain;
     public Transform camOffset;
     public FollowTarget followTarget;
     public Vector3 shopPos;
