@@ -15,6 +15,9 @@ public class CollisionDetection : MonoBehaviour
     int savedMultiply;
     Collider curObstacle;
 
+    public AudioClip speedBoost;
+    public AnnouncerInfo speedBoostAnnouncer;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SpeedBoost"))
@@ -27,7 +30,6 @@ public class CollisionDetection : MonoBehaviour
 
     private void ShipCollision()
     {
-        Debug.Log("DESTROY");
         car.Dead();
     }
 
@@ -81,9 +83,16 @@ public class CollisionDetection : MonoBehaviour
     private void ApplySpeedBoost()
     {
         DOTween.Kill("SpeedBoost");
-        car.currentSpeed = car.defaultSpeed * 2;
+        car.currentSpeed = car.defaultSpeed * 4;
 
-        DOTween.To(() => car.currentSpeed, x => car.currentSpeed = x, car.defaultSpeed, 6f).SetEase(Ease.InExpo).SetId("SpeedBoost");
+        GameEvents.OnSfx?.Invoke(speedBoost, 0.6f);
+        GameEvents.OnAnnouncer?.Invoke(speedBoostAnnouncer);
+
+        DOTween.To(() => car.currentSpeed, x => car.currentSpeed = x, car.defaultSpeed * 2, 0.8f).SetEase(Ease.OutCubic).SetId("SpeedBoost").OnComplete(() =>
+        {
+            DOTween.To(() => car.currentSpeed, x => car.currentSpeed = x, car.defaultSpeed, 6f).SetEase(Ease.InExpo).SetId("SpeedBoost");
+        });
+        GameData.Instance.localPlayer.OnGainedBoost?.Invoke();
     }
 }
 

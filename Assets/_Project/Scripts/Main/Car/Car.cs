@@ -13,11 +13,14 @@ public enum ECarState
 
 public class Car : MonoBehaviour
 {
+    public bool godMode;
     public float defaultSpeed;
     public float currentSpeed;
     public GameObject ded;
     public GameObject view;
     public GameObject ui;
+
+    public AudioClip[] dedClips;
 
     private void Awake()
     {
@@ -46,6 +49,10 @@ public class Car : MonoBehaviour
 
     public void Dead()
     {
+        if (godMode) return;
+
+        GameEvents.OnSfx?.Invoke(dedClips[UnityEngine.Random.Range(0, dedClips.Length)], 0.6f);
+
         view.SetActive(false);
         ui.SetActive(false);
         ded.SetActive(true);

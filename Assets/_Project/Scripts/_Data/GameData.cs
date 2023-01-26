@@ -1,6 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum EGameState
+{
+    None = 0,
+    Intro = 10,
+    Menu = 20,
+    Gameplay = 30,
+}
 
 [CreateAssetMenu(menuName = "UMI/GameData")]
 public class GameData : ScriptableObject
@@ -9,12 +18,24 @@ public class GameData : ScriptableObject
     public PlayerData localPlayer;
     public ArtData artData;
     public List<PlayerData> players = new List<PlayerData>();
+    public EGameState CurrentGameState;
+    public EGameState PreviousGameState;
+
 
     public GameplaySettingsData gameplaySettings;
 
     public void Init()
     {
         Instance = this;
+        ChangeGameState(EGameState.Menu);
+        GameEvents.OnInitialized?.Invoke();
+    }
+
+    public void ChangeGameState(EGameState newState)
+    {
+        CurrentGameState = newState;
+        GameEvents.OnGameStateChange?.Invoke();
+        PreviousGameState = newState;
     }
 }
 
@@ -24,6 +45,8 @@ public class PlayerData
     public ECarState state;
     public float speed;
     public float gforce;
+
+    public Action OnGainedBoost;
 
     public void UpdateSpeed(float speed)
     {

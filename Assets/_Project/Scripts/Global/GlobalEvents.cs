@@ -7,6 +7,14 @@ public class GlobalEvents
 {
 }
 
+public class GameEvents
+{
+    public static Action OnInitialized;
+    public static Action OnGameStateChange;
+    public static Action<AnnouncerInfo> OnAnnouncer;
+    public static Action<AudioClip, float> OnSfx;
+}
+
 public class InputEvents
 {
     public static Action onPlayerClick;

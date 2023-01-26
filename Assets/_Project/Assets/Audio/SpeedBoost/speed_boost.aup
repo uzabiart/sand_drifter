@@ -1,0 +1,95 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="speed_boost_data" version="1.3.0" audacityversion="2.3.3" sel0="0.0000000000" sel1="3.4642857143" vpos="0" h="0.0000000000" zoom="506.5979381443" rate="24000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags>
+		<tag name="Publisher" value="Evil Mind Entertainment ©"/>
+		<tag name="YEAR" value="2015-10-29T10:26"/>
+		<tag name="ALBUM" value="Magic Spells SFX Bundle"/>
+		<tag name="Band" value="Evil Mind Entertainment ©"/>
+		<tag name="GENRE" value="Videogames"/>
+		<tag name="Composer" value="Alberto García de la Orden"/>
+	</tags>
+	<wavetrack name="speed_boost" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="24000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.70866667" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="27072">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808636.au" len="27072" min="-0.245068" max="0.243838" rms="0.061398"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Bio Gun reload 1" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="42978">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808449.au" len="42978" min="-0.249451" max="0.316895" rms="0.039751"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Bio Gun reload 1" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="42978">
+				<waveblock start="0">
+					<simpleblockfile filename="e080813b.au" len="42978" min="-0.27771" max="0.27887" rms="0.043218"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Impact 3" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="44100" gain="0.281838" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="152775">
+				<waveblock start="0">
+					<simpleblockfile filename="e08080ee.au" len="152775" min="-0.693542" max="0.684235" rms="0.085967"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Impact 3" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="44100" gain="0.281838" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="152775">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808f5f.au" len="152775" min="-0.693726" max="0.682312" rms="0.081663"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Spell Fail 1" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="50688">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808002.au" len="50688" min="-0.660224" max="0.876475" rms="0.240881"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Wind 1" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="81434">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808899.au" len="81434" min="-0.763565" max="0.672182" rms="0.141644"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="2">
+				<controlpoint t="0.003947903948" val="0.154929578304"/>
+				<controlpoint t="0.094749694750" val="1.000000000000"/>
+			</envelope>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Wind 4" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="0" rate="48000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="160128">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808c99.au" len="160128" min="-0.811238" max="0.786671" rms="0.106614"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
