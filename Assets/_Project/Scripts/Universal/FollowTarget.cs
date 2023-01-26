@@ -14,7 +14,7 @@ public class FollowTarget : MonoBehaviour
     public bool y;
     public bool z;
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (followSpeed != 0)
         {
