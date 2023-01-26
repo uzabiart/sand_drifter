@@ -19,13 +19,36 @@ public class PlayerUI : MonoBehaviour
     float savedSpeed;
     float savedGforce;
 
+    public GameObject[] inGameplayObjects;
+
     private void OnEnable()
     {
         GameplayEvents.OnObstacleScore += ShowScore;
+        GameEvents.OnGameStateChange += ManageState;
     }
     private void OnDisable()
     {
         GameplayEvents.OnObstacleScore -= ShowScore;
+        GameEvents.OnGameStateChange -= ManageState;
+    }
+
+    private void Start()
+    {
+        ManageState();
+    }
+
+    private void ManageState()
+    {
+        if (GameData.Instance.CurrentGameState == EGameState.Menu)
+        {
+            foreach (GameObject obj in inGameplayObjects)
+                obj.SetActive(false);
+        }
+        if (GameData.Instance.CurrentGameState == EGameState.Gameplay)
+        {
+            foreach (GameObject obj in inGameplayObjects)
+                obj.SetActive(true);
+        }
     }
 
     private void ShowScore(ObstacleScore sc)

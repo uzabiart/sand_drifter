@@ -15,6 +15,11 @@ public class GameEvents
     public static Action<AudioClip, float> OnSfx;
 }
 
+public class UIEvents
+{
+    public static Action OnPanelChanged;
+}
+
 public class InputEvents
 {
     public static Action onPlayerClick;

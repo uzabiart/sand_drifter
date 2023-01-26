@@ -31,4 +31,13 @@ public class FollowTarget : MonoBehaviour
             transform.position = target.position + offset;
         }
     }
+
+    public void Attach()
+    {
+        transform.parent = target;
+    }
+    public void Detach()
+    {
+        transform.parent = null;
+    }
 }

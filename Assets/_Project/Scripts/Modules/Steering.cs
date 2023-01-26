@@ -20,6 +20,8 @@ public class Steering : MonoBehaviour
 
     private void Update()
     {
+        if (GameData.Instance.CurrentGameState != EGameState.Gameplay) return;
+
         if (Input.GetMouseButtonDown(0))
             SaveClickInput();
         if (Input.GetMouseButtonUp(0))

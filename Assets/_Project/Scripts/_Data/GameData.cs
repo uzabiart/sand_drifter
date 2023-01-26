@@ -21,6 +21,7 @@ public class GameData : ScriptableObject
     public EGameState CurrentGameState;
     public EGameState PreviousGameState;
 
+    public EPanelType CurrentPanel;
 
     public GameplaySettingsData gameplaySettings;
 
@@ -29,6 +30,12 @@ public class GameData : ScriptableObject
         Instance = this;
         ChangeGameState(EGameState.Menu);
         GameEvents.OnInitialized?.Invoke();
+    }
+
+    public void ShowPanel(EPanelType panel)
+    {
+        CurrentPanel = panel;
+        UIEvents.OnPanelChanged?.Invoke();
     }
 
     public void ChangeGameState(EGameState newState)

@@ -6,15 +6,27 @@ using System;
 
 public class Menu : MonoBehaviour
 {
+    public GenericAnimationPanel[] menuPanels;
     public CanvasGroup restartButton;
 
     private void OnEnable()
     {
+        UIEvents.OnPanelChanged += ManagePanel;
         GameplayEvents.OnCarStateChange += ManageState;
     }
     private void OnDisable()
     {
+        UIEvents.OnPanelChanged -= ManagePanel;
         GameplayEvents.OnCarStateChange -= ManageState;
+    }
+
+    private void ManagePanel()
+    {
+        foreach (GenericAnimationPanel p in menuPanels)
+        {
+            if (p.type == GameData.Instance.CurrentPanel) p.Show();
+            else p.Hide();
+        }
     }
 
     public void ManageState()
