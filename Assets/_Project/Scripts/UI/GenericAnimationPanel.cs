@@ -14,8 +14,8 @@ public class GenericAnimationPanel : MonoBehaviour
         gameObject.SetActive(true);
         for (i = 0; i < animatedObjects.Length; i++)
         {
-            animatedObjects[i].obj.localPosition = animatedObjects[i].show.startPosition;
-            animatedObjects[i].obj.DOLocalMove(animatedObjects[i].show.endPosition, animatedObjects[i].show.duration).SetEase(animatedObjects[i].show.ease);
+            animatedObjects[i].obj.localPosition = animatedObjects[i].hidePosition;
+            animatedObjects[i].obj.DOLocalMove(animatedObjects[i].showPosition, animatedObjects[i].show.duration).SetEase(animatedObjects[i].show.ease);
         }
     }
 
@@ -25,8 +25,8 @@ public class GenericAnimationPanel : MonoBehaviour
 
         for (i = 0; i < animatedObjects.Length; i++)
         {
-            animatedObjects[i].obj.localPosition = animatedObjects[i].hide.startPosition;
-            animatedObjects[i].obj.DOLocalMove(animatedObjects[i].hide.endPosition, animatedObjects[i].hide.duration).SetEase(animatedObjects[i].hide.ease).OnComplete(() =>
+            animatedObjects[i].obj.localPosition = animatedObjects[i].showPosition;
+            animatedObjects[i].obj.DOLocalMove(animatedObjects[i].hidePosition, animatedObjects[i].hide.duration).SetEase(animatedObjects[i].hide.ease).OnComplete(() =>
             {
                 gameObject.SetActive(false);
             });
@@ -38,6 +38,8 @@ public class GenericAnimationPanel : MonoBehaviour
 public class AnimatedObject
 {
     public Transform obj;
+    public Vector3 showPosition;
+    public Vector3 hidePosition;
     public AnimationInfo show;
     public AnimationInfo hide;
 }
@@ -47,6 +49,4 @@ public class AnimationInfo
 {
     public float duration;
     public Ease ease;
-    public Vector3 startPosition;
-    public Vector3 endPosition;
 }

@@ -48,8 +48,8 @@ public class Car : MonoBehaviour
 
     public void ManageCarState()
     {
-        if (GameData.Instance.CurrentGameState == EGameState.Gameplay) godMode = false;
-        else godMode = true;
+        //if (GameData.Instance.CurrentGameState == EGameState.Gameplay) godMode = false;
+        //else godMode = true;
     }
 
     private IEnumerator SpawnerCoroutine()
