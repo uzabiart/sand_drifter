@@ -13,7 +13,8 @@ public enum EObjectFadeType
 
 public class EnableAtState : MonoBehaviour
 {
-    public EGameState state;
+    //public EGameState state;
+    public List<EPanelType> panelType;
 
     public Image img;
     public SpriteRenderer spr;
@@ -22,28 +23,37 @@ public class EnableAtState : MonoBehaviour
     public EObjectFadeType type;
     public float time;
 
+    string animId;
+
+    private void Awake()
+    {
+        animId = gameObject.GetInstanceID().ToString();
+    }
+
     private void OnEnable()
     {
-        GameEvents.OnGameStateChange += Manage;
+        UIEvents.OnPanelChanged += Manage;
     }
     private void OnDisable()
     {
-        GameEvents.OnGameStateChange -= Manage;
+        UIEvents.OnPanelChanged -= Manage;
     }
 
     private void Manage()
     {
-        if (state != GameData.Instance.CurrentGameState)
+        DOTween.Kill(animId);
+        Debug.Log(GameData.Instance.CurrentPanel);
+        if (panelType.Contains(GameData.Instance.CurrentPanel))
         {
             if (spr != null)
                 if (type == EObjectFadeType.FadeIn)
-                    spr.DOFade(0f, time);
+                    spr.DOFade(1f, time).SetId(animId);
         }
         else
         {
             if (spr != null)
                 if (type == EObjectFadeType.FadeIn)
-                    spr.DOFade(1f, time);
+                    spr.DOFade(0f, time).SetId(animId);
         }
     }
 }
