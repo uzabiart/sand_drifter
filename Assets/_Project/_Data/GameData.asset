@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   localPlayer:
-    speed: 80
+    state: 10
+    speed: 161.44525
     gforce: 0
   artData: {fileID: 11400000, guid: ea3f7f578087c56448677a826afdddbe, type: 2}
   players: []
+  CurrentGameState: 30
+  PreviousGameState: 30
+  CurrentPanel: 10
   gameplaySettings: {fileID: 11400000, guid: 3ac57ffde5a42af4099852f05a5a3b5c, type: 2}
