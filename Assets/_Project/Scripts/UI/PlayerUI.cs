@@ -23,6 +23,7 @@ public class PlayerUI : MonoBehaviour
 
     private void OnEnable()
     {
+        print("Cos");
         GameplayEvents.OnObstacleScore += ShowScore;
         GameEvents.OnGameStateChange += ManageState;
     }
