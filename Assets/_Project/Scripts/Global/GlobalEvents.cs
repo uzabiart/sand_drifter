@@ -29,4 +29,5 @@ public class GameplayEvents
 {
     public static Action<ObstacleScore> OnObstacleScore;
     public static Action OnCarStateChange;
+    public static Action OnChangeCar;
 }

@@ -52,9 +52,15 @@ public class PlayerData
     public ECarState state;
     public float speed;
     public float gforce;
+    public CarData currentCar;
 
     public Action OnGainedBoost;
 
+    public void ChangeCar(CarData newCar)
+    {
+        currentCar = newCar;
+        GameplayEvents.OnChangeCar?.Invoke();
+    }
     public void UpdateSpeed(float speed)
     {
         this.speed = speed;
